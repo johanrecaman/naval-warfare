@@ -29,6 +29,7 @@ def main():
                     text.clear()
                     counter += 1
                 except Exception:
+                    text.clear()
                     print("Caractere Inválido!")
                     continue
         isIntro = False
@@ -45,6 +46,7 @@ def main():
                 text.tabuleiro(matrizes.playerTela, matrizes.computadorTela)
                 break
             except Exception:
+                    text.clear()
                     print("Caractere Inválido!")
                     continue
         time.sleep(1)
