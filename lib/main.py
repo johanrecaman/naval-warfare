@@ -12,27 +12,41 @@ linha = 0
 coluna = 0
 
 def main():
+    counter = 0
     isIntro = True
     while True:
         text.clear()
+        text.welcome()
         if isIntro:
-            for i in range(5):
-                text.intro(i)
-                linha = int(input('Digite a linha: '))
-                coluna = int(input('Digite a coluna: '))
-                game.boatPlacementChoice(matrizes.player, linha, coluna)
-                game.boatPlacementChoice(matrizes.computador, random.randint(0, 4), random.randint(0, 9))
-                text.clear()
+            while counter < 5:
+                text.intro(counter)
+                try:
+                    linha = int(input('Digite a linha: '))
+                    coluna = int(input('Digite a coluna: '))
+                    
+                    game.boatPlacementChoice(matrizes.player, linha, coluna, matrizes.playerTela, True)
+                    game.boatPlacementChoice(matrizes.computador, random.randint(0, 4), random.randint(0, 9), matrizes.playerTela, False)
+                    text.clear()
+                    counter += 1
+                except Exception:
+                    print("Caractere Inválido!")
+                    continue
         isIntro = False
         text.tabuleiro(matrizes.playerTela, matrizes.computadorTela)
+        time.sleep(2)
         text.ataque()
-        linha = int(input('Digite a linha: '))
-        coluna = int(input('Digite a coluna: '))
-        text.clear()
-        
-        game.jogada(matrizes.computador, matrizes.computadorTela, linha, coluna)
-        text.tabuleiro(matrizes.playerTela, matrizes.computadorTela)
-        
+        while True:
+            try:
+                linha = int(input('Digite a linha: '))
+                coluna = int(input('Digite a coluna: '))
+                text.clear()
+            
+                game.jogada(matrizes.computador, matrizes.computadorTela, linha, coluna)
+                text.tabuleiro(matrizes.playerTela, matrizes.computadorTela)
+                break
+            except Exception:
+                    print("Caractere Inválido!")
+                    continue
         time.sleep(1)
         text.ataqueIA()
         time.sleep(1)

@@ -4,8 +4,11 @@ class Text():
     def clear():
         os.system('cls' if os.name == 'nt' else 'clear')
     
+    def welcome():
+      print(f"Bem vindo ao jogo Batalha Naval")
+      
     def intro(i):
-        print(f"Bem vindo ao jogo Batalha Naval! \n Digite a posição inicial de seu {i+1}º navio:")
+        print(f"Digite a posição inicial de seu {i+1}º navio:")
     
     def ataque():
         print("Digite a posição que deseja atacar:")
@@ -28,7 +31,7 @@ class Text():
     
     def erro():
         print("Posição inválida, digite novamente:")
-        
+      
     def endGame(x):
         print(f'''Vitoria do {x}!
         Feito por:

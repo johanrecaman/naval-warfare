@@ -1,5 +1,5 @@
 class Game():
-    def boatPlacementChoice(self, matrizJogada, linha, coluna):
+    def boatPlacementChoice(self, matrizJogada, linha, coluna, matrizTabuleiro, isPlayer):
         while True:
             if matrizJogada[linha-1][coluna-1] != 0:
                 print('Posição já ocupada')
@@ -7,6 +7,8 @@ class Game():
                 coluna = int(input('Digite a coluna: '))
             else:
                 matrizJogada[linha-1][coluna-1] = 1
+                if isPlayer:
+                    matrizTabuleiro[linha-1][coluna-1] = '\033[94mO\033[0m'
                 break
     
     def jogada(self, matrizJogada, matrizTabuleiro,linha,coluna):    
