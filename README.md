@@ -1,7 +1,6 @@
 <h1 align="center">PUCPR - Naval Warfare</h1>
 
 <p align="center">This is a console project made with python for studying purposes</p>
-<p align="center">This app is on V1.0</p>
 
 <img src="./readmeprint.png"></img>
 
