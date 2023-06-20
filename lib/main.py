@@ -13,12 +13,10 @@ coluna = 0
 
 def main():
     counter = 0
-    counterp = 0
-    counterc = 0
     isIntro = True
-    text.welcome()
     while True:
         text.clear()
+        text.welcome()
         if isIntro:
             while counter < 5:
                 text.intro(counter)
@@ -35,25 +33,8 @@ def main():
                     print("Caractere Inválido!")
                     continue
         isIntro = False
-        for i in range(5):
-            for j in range(10):
-                if matrizes.playerTela[i][j] == '\033[92mX\033[0m':
-                    counterc += 1
-                elif matrizes.computadorTela[i][j] == '\033[92mX\033[0m':
-                    counterp += 1  
-            
-        if counterp == 5:
-            text.clear()
-            text.endGame('player')
-            break
-        elif counterc == 5:
-            text.clear()
-            text.endGame('computador')
-            break
-        counterc = 0
-        counterp = 0
         text.tabuleiro(matrizes.playerTela, matrizes.computadorTela)
-        time.sleep(1)
+        time.sleep(2)
         text.ataque()
         while True:
             try:
@@ -66,7 +47,6 @@ def main():
                 break
             except Exception:
                     text.clear()
-                    text.tabuleiro(matrizes.playerTela, matrizes.computadorTela)
                     print("Caractere Inválido!")
                     continue
         time.sleep(1)
@@ -78,6 +58,12 @@ def main():
         text.tabuleiro(matrizes.playerTela, matrizes.computadorTela)
         time.sleep(1)
         
+        if matrizes.playerTela.count('X') == 5:
+            text.endGame('Computador')
+            break
+        elif matrizes.computadorTela.count('X') == 5:
+            text.endGame('Jogador')
+            break
         
 if __name__ == "__main__":
     main()
